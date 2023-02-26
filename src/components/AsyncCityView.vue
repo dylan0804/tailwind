@@ -116,6 +116,7 @@
 </template>
 
 <script setup>
+import { remove } from "@vue/shared";
 import axios from "axios";
 import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
@@ -145,7 +146,7 @@ const router = useRouter();
 const removeCity = () => {
     const cities = JSON.parse(localStorage.getItem('savedCities'));
     const updatedCities = cities.filter((city) => {
-        city.id !== router.query.id
+        city.id !== route.query.id
     });
     localStorage.setItem('savedCities', JSON.stringify(updatedCities))
     router.push({
